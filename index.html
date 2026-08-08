@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MC Creations — Summer</title>
+<style>
+
+  :root{
+    --cream:#faf5f0;
+    --blush:#e2c2b3;
+    --blush-dark:#d6b1a1;
+    --terracotta:#876356;
+    --brown:#4a2f27;
+    --line:#e8dcd4;
+    --white:#ffffff;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+    font-family: Arial, sans-serif;
+    color:var(--brown);
+    background:transparent;
+  }
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:20px 16px 40px;
+  }
+
+  h1.pageTitle{
+    text-align:center;
+    font-size:28px;
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--brown);
+  }
+  p.pageSub{
+    text-align:center;
+    font-size:14px;
+    color:var(--terracotta);
+    margin:0 0 22px;
+  }
+
+  /* CART BAR */
+  .cartToggle{
+    font-size:13px;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:16px;
+    background:var(--blush);
+    color:var(--brown);
+    border:none;
+    cursor:pointer;
+    display:block;
+    margin:0 auto 14px;
+    max-width:420px;
+    text-align:center;
+  }
+  .cartBox{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    max-width:500px;
+    margin:0 auto 14px;
+    border-radius:12px;
+    background:var(--blush-dark);
+    border:2px dashed var(--terracotta);
+    color:var(--brown);
+    font-size:14px;
+  }
+  .cartBox.open{ max-height:600px; }
+  .cartBoxInner{ padding:12px 16px; }
+  .cartItem{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:8px;
+    padding:8px 0;
+    border-bottom:1px dashed var(--terracotta);
+    font-size:13px;
+  }
+  .cartItem:last-child{ border-bottom:none; }
+  .cartItem-remove{
+    border:none;
+    background:none;
+    color:var(--brown);
+    font-weight:700;
+    cursor:pointer;
+    font-size:15px;
+    line-height:1;
+    padding:0 2px;
+  }
+  .cartEmptyMsg{
+    font-size:13px;
+    text-align:center;
+    padding:10px 0;
+    color:var(--brown);
+  }
+  .cartCopyBtn{
+    width:100%;
+    background:var(--terracotta);
+    color:var(--white);
+    border:none;
+    padding:10px;
+    border-radius:14px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  .cartContactRow{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:10px;
+    font-size:13px;
+  }
+  .cartContactRow a{
+    color:var(--brown);
+    text-decoration:none;
+    font-weight:600;
+  }
+  .quickAddBtn{
+    position:absolute;
+    top:6px;
+    right:6px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:var(--terracotta);
+    color:var(--white);
+    border:none;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* SEARCH */
+  .searchInput{
+    display:block;
+    width:100%;
+    max-width:420px;
+    margin:0 auto 16px;
+    padding:10px 14px;
+    border-radius:16px;
+    border:1.5px solid var(--line);
+    font-size:14px;
+    font-family:Arial, sans-serif;
+    color:var(--brown);
+    background:var(--white);
+  }
+
+  .filterLabel{
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+    color:var(--brown);
+    margin:0 0 6px;
+  }
+
+  /* TABS (auto-generated from subcategory data) */
+  .tabs{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .tab-btn{
+    border:none;
+    background:var(--white);
+    color:var(--brown);
+    padding:8px 16px;
+    border-radius:16px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    border:1.5px solid var(--line);
+    transition: all .15s ease;
+  }
+  .tab-btn.active{
+    background:var(--terracotta);
+    color:var(--white);
+    border-color:var(--terracotta);
+  }
+
+  /* FILTER CHIPS */
+  .filters{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-bottom:26px;
+  }
+  .filter-chip{
+    border:none;
+    background:transparent;
+    color:var(--terracotta);
+    padding:5px 12px;
+    border-radius:12px;
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px dashed var(--terracotta);
+  }
+  .filter-chip.active{
+    background:var(--blush);
+    border-style:solid;
+    color:var(--brown);
+  }
+
+  /* GRID */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+  }
+  @media (max-width:700px){
+    .grid{ grid-template-columns: repeat(2, 1fr); gap:12px; }
+    .card-label{ font-size:13px; padding:8px 6px 10px; }
+  }
+
+  .card{
+    background:transparent;
+    border-radius:14px;
+    overflow:hidden;
+    cursor:pointer;
+    border:1px solid var(--line);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 14px rgba(74,47,39,0.12);
+  }
+
+  .card-imgWrap{
+    position:relative;
+    width:100%;
+    aspect-ratio: 1 / 1;
+    background:transparent;
+  }
+  .card-imgWrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .card-label{
+    padding:10px 10px 12px;
+    font-size:16px;
+    font-weight:700;
+    text-align:center;
+    line-height:1.3;
+  }
+  .card-id{
+    display:block;
+    font-size:11px;
+    font-weight:400;
+    color:var(--terracotta);
+    margin-top:2px;
+  }
+
+  /* swatch dots — sit below the image, above the title */
+  .swatchRow{
+    display:flex;
+    justify-content:center;
+    gap:5px;
+    padding:8px 0 2px;
+  }
+  .swatch-dot{
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    border:2px solid var(--white);
+    box-shadow:0 0 0 1px rgba(0,0,0,0.15);
+    cursor:pointer;
+  }
+  .swatch-dot.active-dot{
+    box-shadow:0 0 0 2px var(--brown);
+  }
+
+  /* PAGINATION */
+  .pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .page-btn{
+    min-width:34px;
+    height:34px;
+    padding:0 8px;
+    border-radius:10px;
+    border:1.5px solid var(--line);
+    background:var(--white);
+    color:var(--brown);
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .page-btn.active-page{
+    background:var(--terracotta);
+    color:var(--white);
+    border-color:var(--terracotta);
+  }
+  .page-btn:disabled{
+    opacity:.4;
+    cursor:default;
+  }
+
+  /* DETAIL VIEW */
+  .detailView{ display:none; }
+  .detailView.showing{ display:block; }
+  .grid.hiddenGrid, .topControls.hiddenGrid{ display:none; }
+
+  .backBtn{
+    background:none;
+    border:none;
+    color:var(--terracotta);
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    margin-bottom:16px;
+    padding:0;
+  }
+
+  .detail-layout{
+    display:flex;
+    gap:34px;
+    flex-wrap:wrap;
+  }
+  .detail-imgCol{
+    flex:1 1 320px;
+    max-width:420px;
+  }
+  .detail-imgCol img{
+    width:100%;
+    border-radius:16px;
+    display:block;
+    background:transparent;
+  }
+
+  .thumbRow{
+    display:flex;
+    flex-direction:row;
+    gap:8px;
+    margin-top:10px;
+    flex-wrap:wrap;
+  }
+  .thumbImg{
+    width:56px;
+    height:56px;
+    flex-shrink:0;
+    object-fit:contain;
+    background:var(--cream);
+    border-radius:8px;
+    cursor:pointer;
+    border:2px solid var(--line);
+  }
+  .thumbImg.active-thumb{
+    border-color:var(--terracotta);
+  }
+
+  .descBox{
+    background:var(--blush);
+    border:1px dashed var(--terracotta);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--brown);
+    margin-bottom:14px;
+  }
+  .detail-infoCol{
+    flex:1 1 320px;
+  }
+
+  .detail-title{
+    font-size:24px;
+    font-weight:700;
+    margin:0 0 4px;
+  }
+  .detail-ref{
+    font-size:13px;
+    color:var(--terracotta);
+    margin:0 0 18px;
+    font-weight:600;
+  }
+
+  .accordion{
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  .accordion-head{
+    background:var(--cream);
+    padding:12px 14px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .accordion-head .selectedTag{
+    font-weight:400;
+    font-size:12px;
+    color:var(--terracotta);
+  }
+  .accordion-body{
+    display:none;
+    padding:12px 14px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .accordion-body.open{ display:flex; }
+
+  .opt-pill{
+    border:1.5px solid var(--line);
+    background:var(--white);
+    padding:7px 13px;
+    border-radius:14px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .opt-pill.selected-opt{
+    background:var(--terracotta);
+    color:var(--white);
+    border-color:var(--terracotta);
+  }
+  .opt-pill .swatchInPill{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    margin-right:6px;
+    vertical-align:middle;
+  }
+
+  .requestBtn{
+    width:100%;
+    background:var(--terracotta);
+    color:var(--white);
+    border:none;
+    padding:13px;
+    border-radius:16px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+  }
+
+  .toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--brown);
+    color:var(--white);
+    padding:9px 16px;
+    border-radius:14px;
+    font-size:13px;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity .25s ease;
+    z-index:9999;
+    text-align:center;
+  }
+  .toast.show{ opacity:1; }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <button class="cartToggle" id="cartToggle">🛒 Your Order (0 items) — tap to view</button>
+  <div class="cartBox" id="cartBox">
+    <div class="cartBoxInner">
+      <div id="cartList"></div>
+      <button class="cartCopyBtn" id="cartCopyBtn">📋 Copy Full Order</button>
+      <div class="cartContactRow">
+        <a href="#" id="cartEmailLink" target="_blank">Email</a>
+        <a href="#" id="cartTextLink">Text</a>
+        <a href="https://www.instagram.com/maliascraftedcreations/" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/share/18Pufov4T5/?mibextid=wwXIfr" target="_blank">Facebook</a>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="pageTitle">Summer Door Hangers</h1>
+  <p class="pageSub">Add designs to your order as you browse, then send it all in one message</p>
+
+  <input type="text" id="searchInput" class="searchInput" placeholder="🔍 Search by name">
+
+  <div class="topControls" id="topControls">
+    <p class="filterLabel">Filters:</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <div class="detailView" id="detailView">
+    <button class="backBtn" id="backBtn">&larr; Back to gallery</button>
+    <div class="detail-layout">
+      <div class="detail-imgCol">
+        <img id="detailImg" src="" alt="">
+        <div class="thumbRow" id="thumbRow" style="display:none;"></div>
+      </div>
+      <div class="detail-infoCol">
+        <div class="detail-title" id="detailTitle"></div>
+        <div class="detail-ref" id="detailRef"></div>
+
+        <div class="accordion" id="colorAccordion" style="display:none;">
+          <div class="accordion-head" id="colorAccHead">
+            <span>Choose a Color</span>
+            <span class="selectedTag" id="colorSelectedTag"></span>
+          </div>
+          <div class="accordion-body" id="colorAccBody"></div>
+        </div>
+
+        <div class="accordion" id="sizeAccordion" style="display:none;">
+          <div class="accordion-head" id="sizeAccHead">
+            <span>Choose a Size</span>
+            <span class="selectedTag" id="sizeSelectedTag"></span>
+          </div>
+          <div class="accordion-body" id="sizeAccBody"></div>
+        </div>
+
+        <div class="descBox" id="descBox" style="display:none;"></div>
+
+        <button class="requestBtn" id="requestBtn">➕ Add to Order</button>
+        <p style="text-align:center;font-size:12px;color:var(--terracotta);margin:8px 0 0;">
+          Keep browsing to add more — send everything as one message when you're ready
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================================================================
+   DESIGN DATA — Summer
+   ================================================================
+   Copy one whole { ... } block to add a new design. Delete these
+   2 placeholder examples once you've added your real ones.
+
+   subcategory: BUILDS your tabs automatically — use short, simple
+   words ("general", "beach", "sunflower"...).
+
+   photos: OPTIONAL extra shots. Leave as [] if none.
+   description: OPTIONAL. Leave as "" to hide the description box.
+   ================================================================ */
+const DESIGNS = [
+  {
+    id: "SUM-01",
+    label: "Sunflower Welcome",
+    subcategory: "general",
+    tags: ["sunflower","welcome"],
+    image: "URL_1",
+    photos: [],
+    description: "",
+    colors: [
+      { name: "Yellow", image: "URL_2", swatch: "#f2d874" },
+      { name: "Natural",image: "URL_3", swatch: "#d8c3a3" }
+    ],
+    sizes: [ { name: "15\" (Small)" }, { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-02",
+    label: "Beach Days",
+    subcategory: "beach",
+    tags: ["beach","anchor"],
+    image: "URL_4",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: []
+  }
+];
+
+/* ================================================================
+   STATE
+   ================================================================ */
+let state = {
+  subcategory: "all",
+  activeFilters: [],
+  page: 1,
+  perPage: 6,
+  currentDesign: null,
+  selectedColorIndex: 0,
+  selectedSizeIndex: null,
+  searchTerm: ""
+};
+
+/* ================================================================
+   SHARED CART — DO NOT change this key. It must be spelled exactly
+   the same on every season's file — it's what makes them all read
+   and write to the same order instead of each having a separate one.
+   ================================================================ */
+const CART_KEY = "mccreations_cart";
+
+function loadCart(){
+  try {
+    const saved = localStorage.getItem(CART_KEY);
+    return saved ? JSON.parse(saved) : [];
+  } catch (e){
+    return [];
+  }
+}
+function saveCart(){
+  try {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  } catch (e){}
+}
+let cart = loadCart();
+
+// Tracks whether the current detail view was opened by jumping in from a
+// different section's cart (vs. clicking something in this section's own
+// grid) — so "Back to gallery" knows whether to just close the detail view
+// or actually navigate back to where you came from.
+let arrivedFromAnotherPage = false;
+
+/* ================================================================
+   HELPERS
+   ================================================================ */
+function getSubcategories(){
+  const set = new Set();
+  DESIGNS.forEach(d => set.add(d.subcategory));
+  return Array.from(set);
+}
+function capitalize(word){
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+function getAllTags(){
+  const set = new Set();
+  DESIGNS.forEach(d => d.tags.forEach(t => set.add(t)));
+  return Array.from(set);
+}
+function getFilteredDesigns(){
+  return DESIGNS.filter(d => {
+    const subOk = state.subcategory === "all" || d.subcategory === state.subcategory;
+    const tagOk = state.activeFilters.length === 0 ||
+                  state.activeFilters.every(f => d.tags.includes(f));
+    const searchOk = state.searchTerm === "" ||
+                  d.label.toLowerCase().includes(state.searchTerm.toLowerCase());
+    return subOk && tagOk && searchOk;
+  });
+}
+function findDesign(id){
+  return DESIGNS.find(d => d.id === id);
+}
+
+/* ================================================================
+   RENDER: TABS (auto-built from subcategory data)
+   ================================================================ */
+function renderTabs(){
+  const tabsEl = document.getElementById("tabs");
+  tabsEl.innerHTML = "";
+
+  const allBtn = document.createElement("button");
+  allBtn.className = "tab-btn" + (state.subcategory === "all" ? " active" : "");
+  allBtn.textContent = "All";
+  allBtn.onclick = () => { state.subcategory = "all"; state.page = 1; renderAll(); };
+  tabsEl.appendChild(allBtn);
+
+  getSubcategories().forEach(sub => {
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (state.subcategory === sub ? " active" : "");
+    btn.textContent = capitalize(sub);
+    btn.onclick = () => { state.subcategory = sub; state.page = 1; renderAll(); };
+    tabsEl.appendChild(btn);
+  });
+}
+
+/* ================================================================
+   RENDER: FILTER CHIPS
+   ================================================================ */
+function renderFilters(){
+  const filtersEl = document.getElementById("filters");
+  filtersEl.innerHTML = "";
+  getAllTags().forEach(tag => {
+    const chip = document.createElement("button");
+    chip.className = "filter-chip" + (state.activeFilters.includes(tag) ? " active" : "");
+    chip.textContent = tag;
+    chip.onclick = () => {
+      if (state.activeFilters.includes(tag)){
+        state.activeFilters = state.activeFilters.filter(f => f !== tag);
+      } else {
+        state.activeFilters.push(tag);
+      }
+      state.page = 1;
+      renderAll();
+    };
+    filtersEl.appendChild(chip);
+  });
+}
+
+/* ================================================================
+   RENDER: GRID + PAGINATION
+   ================================================================ */
+function renderGrid(){
+  const gridEl = document.getElementById("grid");
+  const filtered = getFilteredDesigns();
+  const totalPages = Math.max(1, Math.ceil(filtered.length / state.perPage));
+  if (state.page > totalPages) state.page = totalPages;
+
+  const start = (state.page - 1) * state.perPage;
+  const pageItems = filtered.slice(start, start + state.perPage);
+
+  gridEl.innerHTML = "";
+  pageItems.forEach(d => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const imgWrap = document.createElement("div");
+    imgWrap.className = "card-imgWrap";
+
+    const img = document.createElement("img");
+    img.src = d.colors.length ? d.colors[0].image : d.image;
+    img.alt = d.label;
+    img.onload = sendResize;
+    imgWrap.appendChild(img);
+
+    imgWrap.onclick = () => openDetail(d.id);
+
+    if (d.colors.length === 0 && d.sizes.length === 0){
+      const quickAdd = document.createElement("button");
+      quickAdd.className = "quickAddBtn";
+      quickAdd.textContent = "+";
+      quickAdd.title = "Add to order";
+      quickAdd.onclick = (e) => {
+        e.stopPropagation();
+        addToCart({ id: d.id, label: d.label, colorName: null, sizeName: null });
+      };
+      imgWrap.appendChild(quickAdd);
+    }
+
+    card.appendChild(imgWrap);
+
+    if (d.colors.length > 1){
+      const row = document.createElement("div");
+      row.className = "swatchRow";
+      d.colors.forEach((c, i) => {
+        const dot = document.createElement("div");
+        dot.className = "swatch-dot" + (i === 0 ? " active-dot" : "");
+        dot.style.background = c.swatch;
+        dot.title = c.name;
+        dot.onclick = (e) => {
+          e.stopPropagation();
+          img.src = c.image;
+          row.querySelectorAll(".swatch-dot").forEach(x => x.classList.remove("active-dot"));
+          dot.classList.add("active-dot");
+        };
+        row.appendChild(dot);
+      });
+      card.appendChild(row);
+    }
+
+    const label = document.createElement("div");
+    label.className = "card-label";
+    label.innerHTML = d.label + '<span class="card-id">' + d.id + '</span>';
+    label.onclick = () => openDetail(d.id);
+    card.appendChild(label);
+
+    gridEl.appendChild(card);
+  });
+
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages){
+  const pagEl = document.getElementById("pagination");
+  pagEl.innerHTML = "";
+  if (totalPages <= 1) return;
+
+  const prev = document.createElement("button");
+  prev.className = "page-btn";
+  prev.textContent = "<";
+  prev.disabled = state.page === 1;
+  prev.onclick = () => { state.page--; renderGrid(); };
+  pagEl.appendChild(prev);
+
+  for (let p = 1; p <= totalPages; p++){
+    const btn = document.createElement("button");
+    btn.className = "page-btn" + (p === state.page ? " active-page" : "");
+    btn.textContent = p;
+    btn.onclick = () => { state.page = p; renderGrid(); };
+    pagEl.appendChild(btn);
+  }
+
+  const next = document.createElement("button");
+  next.className = "page-btn";
+  next.textContent = ">";
+  next.disabled = state.page === totalPages;
+  next.onclick = () => { state.page++; renderGrid(); };
+  pagEl.appendChild(next);
+}
+
+/* ================================================================
+   DETAIL VIEW
+   ================================================================ */
+function openDetail(id){
+  const d = findDesign(id);
+  if (!d) return;
+
+  state.currentDesign = d;
+  state.selectedColorIndex = 0;
+  state.selectedSizeIndex = d.sizes.length ? 0 : null;
+
+  document.getElementById("topControls").classList.add("hiddenGrid");
+  document.getElementById("grid").classList.add("hiddenGrid");
+  document.getElementById("pagination").style.display = "none";
+  document.getElementById("detailView").classList.add("showing");
+
+  window.location.hash = id;
+  renderDetail();
+  window.scrollTo({top:0, behavior:"instant"});
+}
+
+function closeDetail(){
+  document.getElementById("topControls").classList.remove("hiddenGrid");
+  document.getElementById("grid").classList.remove("hiddenGrid");
+  document.getElementById("pagination").style.display = "flex";
+  document.getElementById("detailView").classList.remove("showing");
+  window.location.hash = "";
+  sendResize();
+}
+
+function renderDetail(){
+  const d = state.currentDesign;
+  const img = document.getElementById("detailImg");
+
+  img.src = d.colors.length ? d.colors[state.selectedColorIndex].image : d.image;
+  img.onload = sendResize;
+
+  document.getElementById("detailTitle").textContent = d.label;
+  document.getElementById("detailRef").textContent = "Reference: " + d.id;
+
+  // DESCRIPTION BOX — only shows if you've actually written one
+  const descBox = document.getElementById("descBox");
+  if (d.description && d.description.trim() !== ""){
+    descBox.style.display = "block";
+    descBox.textContent = d.description;
+  } else {
+    descBox.style.display = "none";
+  }
+
+  // THUMBNAIL STRIP — the current main photo plus any extra "photos"
+  const thumbRow = document.getElementById("thumbRow");
+  const mainSrc = img.src;
+  const extraPhotos = d.photos || [];
+  const allThumbs = [mainSrc].concat(extraPhotos);
+  if (allThumbs.length > 1){
+    thumbRow.style.display = "flex";
+    thumbRow.innerHTML = "";
+    allThumbs.forEach((src, i) => {
+      const t = document.createElement("img");
+      t.src = src;
+      t.className = "thumbImg" + (i === 0 ? " active-thumb" : "");
+      t.onclick = () => {
+        img.src = src;
+        thumbRow.querySelectorAll(".thumbImg").forEach(x => x.classList.remove("active-thumb"));
+        t.classList.add("active-thumb");
+      };
+      thumbRow.appendChild(t);
+    });
+  } else {
+    thumbRow.style.display = "none";
+  }
+
+  const colorAcc = document.getElementById("colorAccordion");
+  const colorBody = document.getElementById("colorAccBody");
+  const colorTag = document.getElementById("colorSelectedTag");
+  if (d.colors.length){
+    colorAcc.style.display = "block";
+    colorTag.textContent = d.colors[state.selectedColorIndex].name;
+    colorBody.innerHTML = "";
+    d.colors.forEach((c, i) => {
+      const pill = document.createElement("button");
+      pill.className = "opt-pill" + (i === state.selectedColorIndex ? " selected-opt" : "");
+      pill.innerHTML = '<span class="swatchInPill" style="background:' + c.swatch + '"></span>' + c.name;
+      pill.onclick = () => { state.selectedColorIndex = i; renderDetail(); };
+      colorBody.appendChild(pill);
+    });
+  } else {
+    colorAcc.style.display = "none";
+  }
+
+  const sizeAcc = document.getElementById("sizeAccordion");
+  const sizeBody = document.getElementById("sizeAccBody");
+  const sizeTag = document.getElementById("sizeSelectedTag");
+  if (d.sizes.length){
+    sizeAcc.style.display = "block";
+    sizeTag.textContent = d.sizes[state.selectedSizeIndex].name;
+    sizeBody.innerHTML = "";
+    d.sizes.forEach((s, i) => {
+      const pill = document.createElement("button");
+      pill.className = "opt-pill" + (i === state.selectedSizeIndex ? " selected-opt" : "");
+      pill.textContent = s.name;
+      pill.onclick = () => { state.selectedSizeIndex = i; renderDetail(); };
+      sizeBody.appendChild(pill);
+    });
+  } else {
+    sizeAcc.style.display = "none";
+  }
+
+  sendResize();
+}
+
+/* ACCORDION TOGGLES */
+document.getElementById("colorAccHead").onclick = () => {
+  document.getElementById("colorAccBody").classList.toggle("open");
+  sendResize();
+};
+document.getElementById("sizeAccHead").onclick = () => {
+  document.getElementById("sizeAccBody").classList.toggle("open");
+  sendResize();
+};
+
+document.getElementById("backBtn").onclick = () => {
+  if (arrivedFromAnotherPage){
+    window.history.back();
+  } else {
+    closeDetail();
+  }
+};
+
+document.getElementById("requestBtn").onclick = () => {
+  const d = state.currentDesign;
+  addToCart({
+    id: d.id,
+    label: d.label,
+    colorName: d.colors.length ? d.colors[state.selectedColorIndex].name : null,
+    sizeName: d.sizes.length ? d.sizes[state.selectedSizeIndex].name : null
+  });
+};
+
+function showToast(text){
+  const t = document.getElementById("toast");
+  t.textContent = text;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2600);
+}
+
+/* ================================================================
+   CART
+   ================================================================ */
+function addToCart(item){
+  item.page = window.location.origin + window.location.pathname;
+  cart.push(item);
+  saveCart();
+  renderCart();
+  showToast("Added " + item.label + " to your order 🛒");
+  sendResize();
+}
+
+function removeFromCart(index){
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+  sendResize();
+}
+
+function goToCartItem(item){
+  document.getElementById("cartBox").classList.remove("open");
+  if (findDesign(item.id)){
+    openDetail(item.id);
+  } else {
+    window.location.href = item.page + "#" + item.id;
+  }
+}
+
+function buildFullOrderMessage(){
+  if (cart.length === 0) return "";
+  let lines = ["Hi! I'd like to order the following:"];
+  cart.forEach((item, i) => {
+    let line = (i + 1) + ". " + item.label + " (" + item.id + ")";
+    if (item.colorName) line += " — Color: " + item.colorName;
+    if (item.sizeName) line += " — Size: " + item.sizeName;
+    lines.push(line);
+  });
+  return lines.join("\n");
+}
+
+function renderCart(){
+  const toggle = document.getElementById("cartToggle");
+  const list = document.getElementById("cartList");
+
+  toggle.textContent = "🛒 Your Order (" + cart.length + (cart.length === 1 ? " item" : " items") + ") — tap to view";
+
+  if (cart.length === 0){
+    list.innerHTML = '<div class="cartEmptyMsg">No items yet — browse the gallery and tap "Add to Order" on anything you like.</div>';
+  } else {
+    list.innerHTML = "";
+    cart.forEach((item, i) => {
+      const row = document.createElement("div");
+      row.className = "cartItem";
+      let detail = item.label + " (" + item.id + ")";
+      if (item.colorName) detail += " — " + item.colorName;
+      if (item.sizeName) detail += " — " + item.sizeName;
+
+      const textSpan = document.createElement("span");
+      textSpan.textContent = detail;
+      textSpan.style.cursor = "pointer";
+      textSpan.style.textDecoration = "underline";
+      textSpan.style.textDecorationStyle = "dotted";
+      textSpan.onclick = () => goToCartItem(item);
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "cartItem-remove";
+      removeBtn.textContent = "✕";
+      removeBtn.title = "Remove";
+      removeBtn.onclick = () => removeFromCart(i);
+
+      row.appendChild(textSpan);
+      row.appendChild(removeBtn);
+      list.appendChild(row);
+    });
+  }
+
+  const msg = buildFullOrderMessage();
+  document.getElementById("cartEmailLink").href =
+    "mailto:?subject=" + encodeURIComponent("Door Hanger Order Request") +
+    "&body=" + encodeURIComponent(msg);
+  document.getElementById("cartTextLink").href = "sms:?body=" + encodeURIComponent(msg);
+}
+
+document.getElementById("cartToggle").onclick = () => {
+  document.getElementById("cartBox").classList.toggle("open");
+  sendResize();
+};
+
+document.getElementById("cartCopyBtn").onclick = () => {
+  const msg = buildFullOrderMessage();
+  if (!msg){
+    showToast("Your order is empty — add something first!");
+    return;
+  }
+  navigator.clipboard.writeText(msg).then(() => {
+    showToast("Order copied! Paste it into an email, text, or DM 💬");
+  }).catch(() => {
+    showToast("Tap Email or Text below to send your order");
+  });
+};
+
+/* ================================================================
+   MASTER RENDER
+   ================================================================ */
+function renderAll(){
+  document.getElementById("searchInput").value = state.searchTerm;
+  renderTabs();
+  renderFilters();
+  renderGrid();
+  renderCart();
+  sendResize();
+}
+
+/* ================================================================
+   RESIZE HANDLING
+   ================================================================ */
+function sendResize(){
+  const height = document.documentElement.scrollHeight;
+  window.parent.postMessage({ type: "resize-iframe", height: height }, "*");
+}
+const resizeObserver = new ResizeObserver(() => sendResize());
+resizeObserver.observe(document.body);
+window.addEventListener("load", sendResize);
+window.addEventListener("resize", sendResize);
+
+/* ================================================================
+   SEARCH
+   ================================================================ */
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  state.searchTerm = e.target.value;
+  state.page = 1;
+  renderGrid();
+});
+
+/* ================================================================
+   INIT
+   ================================================================ */
+function init(){
+  renderAll();
+  const hashId = window.location.hash.replace("#","");
+  if (hashId && findDesign(hashId)){
+    const cameFromDifferentPage = document.referrer &&
+      document.referrer.split("#")[0] !== (window.location.origin + window.location.pathname);
+    arrivedFromAnotherPage = !!cameFromDifferentPage;
+    openDetail(hashId);
+  }
+}
+init();
+
+</script>
+</body>
+</html>
