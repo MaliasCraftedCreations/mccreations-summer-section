@@ -506,7 +506,7 @@
   <h1 class="pageTitle">Summer Door Hangers</h1>
   <p class="pageSub">Add designs to your order as you browse, then send it all in one message</p>
 
-  <input type="text" id="searchInput" class="searchInput" placeholder="🔍 Search by name">
+  <input type="text" id="searchInput" class="searchInput" placeholder="🔍 Search by name (e.g. 'Beach' or 'Crab')">
 
   <div class="topControls" id="topControls">
     <p class="filterLabel">Filters:</p>
@@ -574,28 +574,477 @@
 const DESIGNS = [
   {
     id: "SUM-01",
-    label: "Sunflower Welcome",
-    subcategory: "general",
-    tags: ["sunflower","welcome"],
-    image: "URL_1",
-    photos: [],
-    description: "",
-    colors: [
-      { name: "Yellow", image: "URL_2", swatch: "#f2d874" },
-      { name: "Natural",image: "URL_3", swatch: "#d8c3a3" }
-    ],
-    sizes: [ { name: "15\" (Small)" }, { name: "22\" (Large)" } ]
-  },
-  {
-    id: "SUM-02",
-    label: "Beach Days",
-    subcategory: "beach",
-    tags: ["beach","anchor"],
-    image: "URL_4",
+    label: "Lighthouse Welcome",
+    subcategory: "Generic",
+    tags: ["Sunset","Lighthouse","Beachy"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/706981206_18096744104466071_808122744668745371.jpg/:/rs=w:740,cg:true,m",
     photos: [],
     description: "",
     colors: [],
-    sizes: []
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-02",
+    label: "It's 5 O'clock Somewhere",
+    subcategory: "Snarky",
+    tags: ["Sunset","Alcohol","Beachy"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731292789_18100754666466071_535757329127101877.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-03",
+    label: "Beach House Turtle",
+    subcategory: "Generic",
+    tags: ["Beachy","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731252872_18100754657466071_859105420378854947.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-04",
+    label: "Welcome Pier Chairs",
+    subcategory: "Generic",
+    tags: ["Beachy"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731345416_18100754168466071_168837136336222793.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:740,cg:true",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-05",
+    label: "Beach Bums Welcome",
+    subcategory: "Generic" , "Snarky",
+    tags: ["Beachy"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731338933_18100754129466071_582825113862401873.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-06",
+    label: "Stay Salty Crab",
+    subcategory: "Generic",
+    tags: ["Beachy","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/736413030_18100754240466071_852154625070696363.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [
+      { name: "Red Crab", image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/736413030_18100754240466071_852154625070696363.jpg/:/rs=w:740,cg:true,m", swatch: "#f30203" },
+      { name: "Blue Crab",image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731438572_18100754192466071_818728076365538726.jpg/:/rs=w:740,cg:true,m", swatch: "#4db2e5" }
+    ],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-07",
+    label: "No Crabby Attitudes",
+    subcategory: "Snarky",
+    tags: ["Beachy","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731235451_18100754711466071_475857869341734054.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-08",
+    label: "Oh Shell No",
+    subcategory: "Generic",
+    tags: ["Beachy","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/711680051_18096744053466071_199953728047481209.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-09",
+    label: "Welcome Pelican Sunset",
+    subcategory: "Generic",
+    tags: ["Beachy","Sunset","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/730451360_18100754642466071_264553397342976754.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-10",
+    label: "Welcome Pelican",
+    subcategory: "Generic",
+    tags: ["Beachy","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731213348_18100754555466071_562163392485450340.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-11",
+    label: "Lifes A Beach",
+    subcategory: "Generic","Snarky",
+    tags: ["Beachy","Anchor"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/711494619_18096744017466071_477749835079758928.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-12",
+    label: "Welcome Anchors",
+    subcategory: "Generic",
+    tags: ["Beachy","Anchor"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/512694271_1345798567551955_8408563231052050712.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-13",
+    label: "Beach Please",
+    subcategory: "Generic","Snarky",
+    tags: ["Beachy","Sunset"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/513838093_1345798437551968_7780890130338915507.jpg/:/cr=t:14.67%25,l:0%25,w:100%25,h:75%25/rs=w:740,h:740,cg:true",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-14",
+    label: "Hello Beach",
+    subcategory: "Generic","Snarky",
+    tags: ["Beachy"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731442105_18100754531466071_502738702027747083.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-15",
+    label: "No Wake Zone Surfboard",
+    subcategory: "Generic",
+    tags: ["Beachy","Surfboard"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/712159625_18096744035466071_121333874070685027.jpg/:/rs=w:740,cg:true,m",
+    photos: [
+      "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/712159625_18096744035466071_121333874070685027.jpg/:/rs=w:740,cg:true,m",
+      "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/711289987_18096744044466071_330196968670047269.jpg/:/rs=w:740,cg:true,m"
+    ],
+    description: "",
+    colors: [
+      { name: "Dark Blue", image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/711289987_18096744044466071_330196968670047269.jpg/:/rs=w:740,cg:true,m", swatch: "#17276e" },
+      { name: "Teal",image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/712159625_18096744035466071_121333874070685027.jpg/:/rs=w:740,cg:true,m", swatch: "#1b9fa2" }
+    ],
+    sizes: [ { name: "(Small)" } ]
+  },
+  {
+    id: "SUM-16",
+    label: "No Wake Zone Waves",
+    subcategory: "Generic",
+    tags: ["Beachy","Surfboard","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/709101660_1654565920008550_6722825800317649915.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-17",
+    label: "Wild & Free Bigfoot",
+    subcategory: "Generic",
+    tags: ["Bigfoot","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731147227_18100754462466071_483083166964243275.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [
+     { name: "Natural", image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731147227_18100754462466071_483083166964243275.jpg/:/rs=w:740,cg:true,m", swatch: "#eac891" },
+      { name: "Blue",image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/731390805_18100754207466071_401141441007922302.jpg/:/rs=w:740,cg:true,m", swatch: "#397eaa" }
+    ],,
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-18",
+    label: "Starry Nights & Campfires",
+    subcategory: "Generic",
+    tags: ["Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/494304561_1290704533061359_1868629483066329597.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-19",
+    label: "Camp Wannabrewski",
+    subcategory: "Generic","Snarky",
+    tags: ["Beachy","Alcohol","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/708890200_18096744113466071_425671621495929572.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-20",
+    label: "Welcome Fireflies",
+    subcategory: "Generic",
+    tags: ["Camping","Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/Firefly%20Welcome%20copy%202.webp/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-21",
+    label: "Let's Get Toasted",
+    subcategory: "Generic",
+    tags: ["Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/512676515_1345798574218621_8072888841375617301.jpg/:/cr=t:10.7%25,l:5.75%25,w:89.29%25,h:71.43%25/rs=w:740,h:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-22",
+    label: "Bad Decisions",
+    subcategory: "Snarky",
+    tags: ["Beachy","Alcohol","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/493011593_1290704683061344_5335519874488054044.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-23",
+    label: "Camper Love",
+    subcategory: "Generic",
+    tags: ["Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/710848902_18096744122466071_4662655168-f833407.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-24",
+    label: "River Life Paddle",
+    subcategory: "Generic",
+    tags: ["Beachy","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/512719618_1345798500885295_7507794809781046352.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-25",
+    label: "Gone To The Lake",
+    subcategory: "Generic",
+    tags: ["Beachy","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/512709701_1345798617551950_28458969525-219d5e5.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-26",
+    label: "Prolly Out Fishin",
+    subcategory: "Generic",
+    tags: ["Fishing","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/512707911_1345798610885284_4506582517622101564.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-27",
+    label: "Gone Fishin",
+    subcategory: "Generic",
+    tags: ["Fishing","Camping"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/514253276_1347742274024251_1645872049810895368.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "15\" (Small)" } , { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-28",
+    label: "Floral Welcome",
+    subcategory: "Generic",
+    tags: ["Flowers"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/502528258_1321913489940463_72061182340-2429ab1.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-27",
+    label: "Hello Paradise",
+    subcategory: "Generic",
+    tags: ["Flowers","Beachy"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/514690729_1347743054024173_4299687593198381638.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-28",
+    label: "Welcome To The Tiki Bar",
+    subcategory: "Generic",
+    tags: ["Beachy","Flowers","Fruit"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/514426769_1347743127357499_6822932888716900081.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-29",
+    label: "Welcome Hibiscus",
+    subcategory: "Generic",
+    tags: ["Flowers"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/Welcome%20Hibiscus-a01f241.JPG/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-30",
+    label: "Welcome Strawberries",
+    subcategory: "Generic",
+    tags: ["Fruit","Flowers"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/492013554_1287647663367046_63701566252-71af8c6.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-31",
+    label: "Hello Summer Wateemelon",
+    subcategory: "Generic",
+    tags: ["Fruit"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/Hello%20Summer%20Watermelon-3feaaba.JPG/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:740,cg:true",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-32",
+    label: "Welcome Butterfly",
+    subcategory: "Generic",
+    tags: ["Animals","Flowers"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/502413704_1321272300004582_70244416372-d4e7416.jpg/:/cr=t:5.36%25,l:5.36%25,w:89.29%25,h:89.29%25/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-33",
+    label: "Hello Summer Waves",
+    subcategory: "Generic",
+    tags: ["Beachy","Sunset"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/Hello%20Summer%20Waves-18669b6.JPG/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-34",
+    label: "Aloha Pineapple",
+    subcategory: "Generic",
+    tags: ["Fruit"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/493735633_1289992536465892_7633158202784731229.jpg/:/cr=t:5.19%25,l:0%25,w:100%25,h:91.81%25/rs=w:740,h:740,cg:true",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-35",
+    label: "Not Swingers",
+    subcategory: "Snarky",
+    tags: ["Beachy","Fruit"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/505412709_1328780552587090_1282735509354958334.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-36",
+    label: "Oh Hello Flockers Flamingo",
+    subcategory: "Generic", "Snarky",
+    tags: ["Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/502398007_1321913463273799_4417526499610964860.jpg/:/cr=t:11.36%25,l:0%25,w:100%25,h:80.06%25/rs=w:740,h:740,cg:true",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-37",
+    label: "Welcome Flamingo",
+    subcategory: "Generic",
+    tags: ["Animals"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/Flamingo-a1597ba.webp/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:740,cg:true",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-38",
+    label: "Over Par Under The Influence",
+    subcategory: "Sports", "Snarky",
+    tags: ["Sports","Alcohol"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/493917841_1290704709728008_40447254616-5822c3d.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-39",
+    label: "Golf Girl Silhouette",
+    subcategory: "Sports", "Generic",
+    tags: ["Sports"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/493490799_1288980629900416_89418554533-d750a0e.jpg/:/rs=w:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
+  },
+  {
+    id: "SUM-40",
+    label: "Golf Boy Silhouette",
+    subcategory: "Sports", "Generic",
+    tags: ["Sports"],
+    image: "https://img1.wsimg.com/isteam/ip/e57bea54-8b62-483e-b4f4-30ae2f7988e3/IMG_8824.jpeg/:/cr=t:21.66%25,l:8.86%25,w:76.92%25,h:57.69%25/rs=w:740,h:740,cg:true,m",
+    photos: [],
+    description: "",
+    colors: [],
+    sizes: [ { name: "22\" (Large)" } ]
   }
 ];
 
